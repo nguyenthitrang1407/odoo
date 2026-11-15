@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Starting points an administrator adapts: steps needing specific people
+         (director, chief accountant...) are added per company.
+         Custom field labels cannot be translated, so they are written in Vietnamese. -->
+
+    <record id="category_general" model="at.approval.category">
+        <field name="name">General Request</field>
+        <field name="description">Any request that fits no other type</field>
+        <field name="sequence">10</field>
+        <field name="company_id" eval="False"/>
+        <field name="has_amount">optional</field>
+        <field name="has_date">optional</field>
+        <field name="has_reference">optional</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">TT</field>
+    </record>
+    <record id="category_general_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_general"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_business_trip" model="at.approval.category">
+        <field name="name">Business Trip</field>
+        <field name="description">Travel for work: where, when and estimated cost</field>
+        <field name="sequence">20</field>
+        <field name="company_id" eval="False"/>
+        <field name="has_period">required</field>
+        <field name="has_location">required</field>
+        <field name="has_amount">optional</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">CT</field>
+    </record>
+    <record id="category_business_trip_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_business_trip"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_payment" model="at.approval.category">
+        <field name="name">Payment Request</field>
+        <field name="description">Payment to a vendor or a contact</field>
+        <field name="sequence">30</field>
+        <field name="company_id" eval="False"/>
+        <field name="has_document">required</field>
+        <field name="has_amount">required</field>
+        <field name="has_partner">required</field>
+        <field name="has_date">optional</field>
+        <field name="has_reference">optional</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">DNTT</field>
+    </record>
+    <record id="category_payment_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_payment"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_purchase" model="at.approval.category">
+        <field name="name">Purchase Request</field>
+        <field name="description">Goods or services to buy</field>
+        <field name="sequence">40</field>
+        <field name="company_id" eval="False"/>
+        <field name="has_amount">required</field>
+        <field name="has_product">optional</field>
+        <field name="has_partner">optional</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">MS</field>
+    </record>
+    <record id="category_purchase_step_department" model="at.approval.step">
+        <field name="category_id" ref="category_purchase"/>
+        <field name="name">Department head</field>
+        <field name="approver_type">department_manager</field>
+    </record>
+
+    <record id="category_recruitment" model="at.approval.category">
+        <field name="name">Recruitment Request</field>
+        <field name="description">Open a position in your department</field>
+        <field name="sequence">50</field>
+        <field name="company_id" eval="False"/>
+        <field name="request_properties_definition" eval="[
+            {'name': 'job_position', 'string': 'Chức danh cần tuyển', 'type': 'char'},
+            {'name': 'headcount', 'string': 'Số lượng', 'type': 'integer'},
+            {'name': 'expected_salary', 'string': 'Lương dự kiến', 'type': 'float'},
+            {'name': 'needed_by', 'string': 'Ngày cần người', 'type': 'date'},
+        ]"/>
+        <field name="required_property_labels">Chức danh cần tuyển, Số lượng</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">TD</field>
+    </record>
+    <record id="category_recruitment_step_department" model="at.approval.step">
+        <field name="category_id" ref="category_recruitment"/>
+        <field name="name">Department head</field>
+        <field name="approver_type">department_manager</field>
+        <field name="on_missing">skip</field>
+    </record>
+    <record id="category_recruitment_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_recruitment"/>
+        <field name="name">Direct manager</field>
+        <field name="sequence">20</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_salary" model="at.approval.category">
+        <field name="name">Salary Adjustment</field>
+        <field name="description">Change the salary of an employee</field>
+        <field name="sequence">60</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_confidential" eval="True"/>
+        <field name="has_employee">required</field>
+        <field name="request_properties_definition" eval="[
+            {'name': 'current_salary', 'string': 'Lương hiện tại', 'type': 'float'},
+            {'name': 'proposed_salary', 'string': 'Lương đề xuất', 'type': 'float'},
+            {'name': 'effective_date', 'string': 'Ngày hiệu lực', 'type': 'date'},
+            {'name': 'reason', 'string': 'Lý do', 'type': 'char'},
+        ]"/>
+        <field name="required_property_labels">Lương đề xuất, Ngày hiệu lực</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">DCL</field>
+    </record>
+    <record id="category_salary_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_salary"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_transfer" model="at.approval.category">
+        <field name="name">Transfer or Appointment</field>
+        <field name="description">Move an employee to another position or department</field>
+        <field name="sequence">70</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_confidential" eval="True"/>
+        <field name="has_employee">required</field>
+        <field name="has_date">required</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">DC</field>
+    </record>
+    <record id="category_transfer_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_transfer"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+
+    <record id="category_resignation" model="at.approval.category">
+        <field name="name">Resignation</field>
+        <field name="description">Leave the company: last working day and handover</field>
+        <field name="sequence">80</field>
+        <field name="company_id" eval="False"/>
+        <field name="is_confidential" eval="True"/>
+        <field name="employee_can_read" eval="True"/>
+        <field name="has_employee">optional</field>
+        <field name="has_date">required</field>
+        <field name="use_sequence" eval="True"/>
+        <field name="sequence_code">TV</field>
+    </record>
+    <record id="category_resignation_step_manager" model="at.approval.step">
+        <field name="category_id" ref="category_resignation"/>
+        <field name="name">Direct manager</field>
+        <field name="approver_type">manager</field>
+    </record>
+</odoo>

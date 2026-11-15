@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_activity_type_approval" model="mail.activity.type">
+        <field name="name">Approval</field>
+        <field name="summary">Approval needed</field>
+        <field name="icon">fa-check-square-o</field>
+        <field name="res_model">at.approval.request</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <data noupdate="1">
+        <!-- Rendered on the approver line, so that each approver gets their own email. -->
+        <record id="mail_template_request" model="mail.template">
+            <field name="name">Approvals: Approval Needed</field>
+            <field name="model_id" ref="model_at_approval_approver"/>
+            <field name="subject">Approval needed: {{ object.request_id.code or '' }} {{ object.request_id.name }}</field>
+            <field name="partner_to">{{ object.user_id.partner_id.id }}</field>
+            <field name="lang">{{ object.user_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="description">Sent to an approver when it is their turn to approve a request</field>
+            <field name="body_html" type="html">
+<div style="font-size: 13px; margin: 0px; padding: 0px;">
+    <p>Hello <t t-out="object.user_id.name or ''">Approver</t>,</p>
+    <p>The request <b t-out="object.request_id.name or ''">Request</b> is waiting for your approval.</p>
+    <ul t-if="not object.request_id.is_confidential">
+        <li>Type: <t t-out="object.request_id.category_id.name or ''">Type</t></li>
+        <li>Requested by: <t t-out="object.request_id.request_owner_id.name or ''">Owner</t></li>
+        <li t-if="object.request_id.employee_id">Employee concerned: <t t-out="object.request_id.employee_id.name or ''">Employee</t></li>
+        <li t-if="object.request_id.amount">Amount: <t t-out="format_amount(object.request_id.amount, object.request_id.currency_id) or ''">0</t></li>
+        <li t-if="object.step_id">Step: <t t-out="object.step_id.name or ''">Step</t></li>
+    </ul>
+    <p>
+        <a t-attf-href="{{ object.request_id.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.request_id.id }}"
+           style="background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">View Request</a>
+    </p>
+</div>
+            </field>
+        </record>
+
+        <record id="mail_template_approved" model="mail.template">
+            <field name="name">Approvals: Request Approved</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="subject">Approved: {{ object.code or '' }} {{ object.name }}</field>
+            <field name="partner_to">{{ object.request_owner_id.partner_id.id }}</field>
+            <field name="lang">{{ object.request_owner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="description">Sent to the owner when a request is approved</field>
+            <field name="body_html" type="html">
+<div style="font-size: 13px; margin: 0px; padding: 0px;">
+    <p>Hello <t t-out="object.request_owner_id.name or ''">Owner</t>,</p>
+    <p>Your request <b t-out="object.name or ''">Request</b> has been approved.</p>
+    <p>
+        <a t-attf-href="{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}"
+           style="background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">View Request</a>
+    </p>
+</div>
+            </field>
+        </record>
+
+        <record id="mail_template_refused" model="mail.template">
+            <field name="name">Approvals: Request Refused</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="subject">Refused: {{ object.code or '' }} {{ object.name }}</field>
+            <field name="partner_to">{{ object.request_owner_id.partner_id.id }}</field>
+            <field name="lang">{{ object.request_owner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="description">Sent to the owner when a request is refused</field>
+            <field name="body_html" type="html">
+<div style="font-size: 13px; margin: 0px; padding: 0px;">
+    <p>Hello <t t-out="object.request_owner_id.name or ''">Owner</t>,</p>
+    <p>Your request <b t-out="object.name or ''">Request</b> has been refused.</p>
+    <p>
+        <a t-attf-href="{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}"
+           style="background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">View Request</a>
+    </p>
+</div>
+            </field>
+        </record>
+
+        <record id="mail_template_returned" model="mail.template">
+            <field name="name">Approvals: Request Returned for Revision</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="subject">Revision needed: {{ object.code or '' }} {{ object.name }}</field>
+            <field name="partner_to">{{ object.request_owner_id.partner_id.id }}</field>
+            <field name="lang">{{ object.request_owner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="description">Sent to the owner when an approver returns a request for revision</field>
+            <field name="body_html" type="html">
+<div style="font-size: 13px; margin: 0px; padding: 0px;">
+    <p>Hello <t t-out="object.request_owner_id.name or ''">Owner</t>,</p>
+    <p>Your request <b t-out="object.name or ''">Request</b> was returned to you for revision.</p>
+    <p t-if="not object.is_confidential and object.return_reason">Reason: <t t-out="object.return_reason or ''">Reason</t></p>
+    <p>
+        <a t-attf-href="{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}"
+           style="background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">View Request</a>
+    </p>
+</div>
+            </field>
+        </record>
+    </data>
+</odoo>

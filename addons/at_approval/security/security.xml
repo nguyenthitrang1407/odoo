@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="module_category_at_approval" model="ir.module.category">
+        <field name="name">Approvals</field>
+        <field name="sequence">25</field>
+    </record>
+
+    <record id="res_groups_privilege_at_approval" model="res.groups.privilege">
+        <field name="name">Approvals</field>
+        <field name="sequence">25</field>
+        <field name="category_id" ref="module_category_at_approval"/>
+    </record>
+
+    <!-- Every internal user can create requests and approve the ones assigned to them. -->
+    <record id="group_approval_officer" model="res.groups">
+        <field name="name">Officer: See and force-approve all requests</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_at_approval"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Sees every non-confidential request, can change approvers and force approval.</field>
+    </record>
+
+    <record id="group_approval_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_at_approval"/>
+        <field name="implied_ids" eval="[(4, ref('group_approval_officer'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <field name="comment">Configures approval types, steps and email templates.</field>
+    </record>
+
+    <data noupdate="1">
+
+        <record id="at_approval_category_rule_company" model="ir.rule">
+            <field name="name">Approval type: multi-company</field>
+            <field name="model_id" ref="model_at_approval_category"/>
+            <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
+        </record>
+
+        <record id="at_approval_request_rule_company" model="ir.rule">
+            <field name="name">Approval request: multi-company</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
+        </record>
+
+        <!-- Own requests, requests to approve, confidential types shared with one of
+             the user's groups, and requests about the user when the type allows it.
+             The same conditions are repeated on the approver and product lines. -->
+        <record id="at_approval_request_rule_user" model="ir.rule">
+            <field name="name">Approval request: own, to approve, or shared</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', '|', '|',
+                ('request_owner_id', '=', user.id),
+                ('approver_user_ids', 'in', user.id),
+                ('category_id.confidential_group_ids', 'in', user.all_group_ids.ids),
+                '&amp;', ('employee_can_read', '=', True), ('employee_user_id', '=', user.id)
+            ]</field>
+        </record>
+
+        <record id="at_approval_request_rule_officer" model="ir.rule">
+            <field name="name">Approval request: officers see non-confidential requests</field>
+            <field name="model_id" ref="model_at_approval_request"/>
+            <field name="groups" eval="[(4, ref('group_approval_officer'))]"/>
+            <field name="domain_force">[('is_confidential', '=', False)]</field>
+        </record>
+
+        <!-- Lines follow the request. Odoo does not apply the request rules when a
+             line rule points at its request, so the request rules are repeated here. -->
+        <record id="at_approval_approver_rule_company" model="ir.rule">
+            <field name="name">Approver: multi-company</field>
+            <field name="model_id" ref="model_at_approval_approver"/>
+            <field name="domain_force">[('request_id.company_id', 'in', company_ids + [False])]</field>
+        </record>
+
+        <record id="at_approval_approver_rule_user" model="ir.rule">
+            <field name="name">Approver: own, to approve, or shared requests</field>
+            <field name="model_id" ref="model_at_approval_approver"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', '|', '|',
+                ('request_id.request_owner_id', '=', user.id),
+                ('request_id.approver_user_ids', 'in', user.id),
+                ('request_id.category_id.confidential_group_ids', 'in', user.all_group_ids.ids),
+                '&amp;', ('request_id.employee_can_read', '=', True), ('request_id.employee_user_id', '=', user.id)
+            ]</field>
+        </record>
+
+        <record id="at_approval_approver_rule_officer" model="ir.rule">
+            <field name="name">Approver: officers see non-confidential requests</field>
+            <field name="model_id" ref="model_at_approval_approver"/>
+            <field name="groups" eval="[(4, ref('group_approval_officer'))]"/>
+            <field name="domain_force">[('request_id.is_confidential', '=', False)]</field>
+        </record>
+
+        <record id="at_approval_product_line_rule_company" model="ir.rule">
+            <field name="name">Product line: multi-company</field>
+            <field name="model_id" ref="model_at_approval_product_line"/>
+            <field name="domain_force">[('request_id.company_id', 'in', company_ids + [False])]</field>
+        </record>
+
+        <record id="at_approval_product_line_rule_user" model="ir.rule">
+            <field name="name">Product line: own, to approve, or shared requests</field>
+            <field name="model_id" ref="model_at_approval_product_line"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', '|', '|',
+                ('request_id.request_owner_id', '=', user.id),
+                ('request_id.approver_user_ids', 'in', user.id),
+                ('request_id.category_id.confidential_group_ids', 'in', user.all_group_ids.ids),
+                '&amp;', ('request_id.employee_can_read', '=', True), ('request_id.employee_user_id', '=', user.id)
+            ]</field>
+        </record>
+
+        <record id="at_approval_product_line_rule_officer" model="ir.rule">
+            <field name="name">Product line: officers see non-confidential requests</field>
+            <field name="model_id" ref="model_at_approval_product_line"/>
+            <field name="groups" eval="[(4, ref('group_approval_officer'))]"/>
+            <field name="domain_force">[('request_id.is_confidential', '=', False)]</field>
+        </record>
+
+    </data>
+</odoo>

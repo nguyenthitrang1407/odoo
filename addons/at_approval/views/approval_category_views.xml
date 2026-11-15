@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="at_approval_step_view_form" model="ir.ui.view">
+        <field name="name">at.approval.step.form</field>
+        <field name="model">at.approval.step</field>
+        <field name="arch" type="xml">
+            <form string="Approval Step">
+                <sheet>
+                    <group>
+                        <group string="Who Approves">
+                            <field name="name" placeholder="e.g. Department head"/>
+                            <field name="sequence"/>
+                            <field name="approver_type"/>
+                            <field name="user_ids" widget="many2many_tags" invisible="approver_type != 'user'" required="approver_type == 'user'"/>
+                            <field name="required_user_ids" widget="many2many_tags" invisible="approver_type != 'user'"/>
+                            <field name="group_id" invisible="approver_type != 'group'" required="approver_type == 'group'"/>
+                            <field name="level" invisible="approver_type != 'manager_level'"/>
+                            <field name="job_id" invisible="approver_type != 'job'" required="approver_type == 'job'"/>
+                            <field name="field_name" invisible="approver_type != 'field'" required="approver_type == 'field'"/>
+                        </group>
+                        <group string="Rules">
+                            <field name="rule"/>
+                            <field name="min_count" invisible="rule != 'min'"/>
+                            <field name="on_missing"/>
+                        </group>
+                    </group>
+                    <group string="Applies If">
+                        <field name="domain" widget="domain" options="{'model': 'at.approval.request'}" nolabel="1" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="at_approval_category_view_form" model="ir.ui.view">
+        <field name="name">at.approval.category.form</field>
+        <field name="model">at.approval.category</field>
+        <field name="arch" type="xml">
+            <form string="Approval Type">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="1"/>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Business Trip"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                            <field name="sequence"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="use_sequence"/>
+                            <field name="sequence_code" invisible="not use_sequence" required="use_sequence" placeholder="e.g. CT"/>
+                            <field name="is_confidential"/>
+                            <field name="confidential_group_ids" widget="many2many_tags" invisible="not is_confidential"/>
+                            <field name="employee_can_read" invisible="not is_confidential"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Approval Steps" name="steps">
+                            <field name="step_ids">
+                                <list>
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="approver_type"/>
+                                    <field name="rule"/>
+                                    <field name="domain" optional="show"/>
+                                    <field name="on_missing" optional="show"/>
+                                </list>
+                            </field>
+                            <div class="text-muted">
+                                Steps run in order. Steps sharing the same order run in parallel.
+                                A step whose condition does not match the request is skipped.
+                            </div>
+                        </page>
+                        <page string="Fields" name="fields">
+                            <group>
+                                <group string="Standard Fields">
+                                    <field name="has_document" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_employee" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_partner" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_date" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_period" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_location" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_amount" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_quantity" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_reference" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="has_product" widget="radio" options="{'horizontal': true}"/>
+                                </group>
+                                <group string="Custom Fields">
+                                    <div colspan="2" class="text-muted">
+                                        Add custom fields from the form of any request of this type
+                                        (the "Add a Property" button). They can be used in step conditions.
+                                    </div>
+                                    <field name="required_property_labels" placeholder="e.g. Proposed salary, Effective date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notifications" name="notifications">
+                            <group>
+                                <group>
+                                    <field name="notify_mode"/>
+                                    <field name="response_days"/>
+                                </group>
+                                <group string="Email Templates" invisible="notify_mode == 'activity'">
+                                    <div colspan="2" class="text-muted" invisible="not is_confidential">
+                                        Confidential types always use the default templates, which carry no details.
+                                    </div>
+                                    <field name="mail_template_request_id" placeholder="Default template"/>
+                                    <field name="mail_template_approved_id" placeholder="Default template"/>
+                                    <field name="mail_template_refused_id" placeholder="Default template"/>
+                                    <field name="mail_template_returned_id" placeholder="Default template"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="at_approval_category_view_list" model="ir.ui.view">
+        <field name="name">at.approval.category.list</field>
+        <field name="model">at.approval.category</field>
+        <field name="arch" type="xml">
+            <list string="Approval Types">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="description" optional="show"/>
+                <field name="is_confidential" optional="show"/>
+                <field name="notify_mode" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="at_approval_category_view_kanban" model="ir.ui.view">
+        <field name="name">at.approval.category.kanban</field>
+        <field name="model">at.approval.category</field>
+        <field name="arch" type="xml">
+            <kanban create="0" group_create="0">
+                <field name="to_review_count"/>
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside t-if="record.image.raw_value">
+                            <field name="image" widget="image" options="{'size': [64, 64]}"/>
+                        </aside>
+                        <main class="ms-2">
+                            <field name="name" class="fw-bold fs-5"/>
+                            <field name="description" class="text-muted"/>
+                            <div class="d-flex gap-2 mt-2">
+                                <button type="object" name="action_new_request" class="btn btn-primary btn-sm">New Request</button>
+                                <button t-if="record.to_review_count.raw_value" type="object" name="action_to_review" class="btn btn-secondary btn-sm">
+                                    To Review: <field name="to_review_count"/>
+                                </button>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="at_approval_category_view_search" model="ir.ui.view">
+        <field name="name">at.approval.category.search</field>
+        <field name="model">at.approval.category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="confidential" string="Confidential" domain="[('is_confidential', '=', True)]"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_category_dashboard" model="ir.actions.act_window">
+        <field name="name">Approvals</field>
+        <field name="res_model">at.approval.category</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="path">approvals</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No approval type yet</p>
+            <p>An administrator creates approval types in Configuration.</p>
+        </field>
+    </record>
+
+    <record id="action_category_config" model="ir.actions.act_window">
+        <field name="name">Approval Types</field>
+        <field name="res_model">at.approval.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
