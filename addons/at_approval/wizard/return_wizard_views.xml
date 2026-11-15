@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="at_approval_return_wizard_view_form" model="ir.ui.view">
+        <field name="name">at.approval.return.wizard.form</field>
+        <field name="model">at.approval.return.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Return for Revision">
+                <field name="request_id" invisible="1"/>
+                <p>The request goes back to its owner as a draft. Every decision taken so far is discarded.</p>
+                <group>
+                    <field name="reason" placeholder="What should the owner change or add?"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" string="Return Request" type="object" class="btn-primary"/>
+                    <button string="Discard" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

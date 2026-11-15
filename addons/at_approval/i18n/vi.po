@@ -1,0 +1,1732 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* at_approval
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-15 14:52+0000\n"
+"PO-Revision-Date: 2026-11-15 14:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "%s withdrew their decision."
+msgstr "%s đã rút lại quyết định."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "<b>Revision requested:</b>"
+msgstr "<b>Yêu cầu bổ sung:</b>"
+
+#. module: at_approval
+#: model:mail.template,body_html:at_approval.mail_template_approved
+msgid ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Hello <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Your request <b t-out=\"object.name or ''\">Request</b> has been approved.</p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">View Request</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Xin chào <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Yêu cầu <b t-out=\"object.name or ''\">Request</b> của bạn đã được phê duyệt.</p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">Xem yêu cầu</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: at_approval
+#: model:mail.template,body_html:at_approval.mail_template_refused
+msgid ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Hello <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Your request <b t-out=\"object.name or ''\">Request</b> has been refused.</p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">View Request</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Xin chào <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Yêu cầu <b t-out=\"object.name or ''\">Request</b> của bạn đã bị từ chối.</p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">Xem yêu cầu</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: at_approval
+#: model:mail.template,body_html:at_approval.mail_template_returned
+msgid ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Hello <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Your request <b t-out=\"object.name or ''\">Request</b> was returned to you for revision.</p>\n"
+"    <p t-if=\"not object.is_confidential and object.return_reason\">Reason: <t t-out=\"object.return_reason or ''\">Reason</t></p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">View Request</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Xin chào <t t-out=\"object.request_owner_id.name or ''\">Owner</t>,</p>\n"
+"    <p>Yêu cầu <b t-out=\"object.name or ''\">Request</b> được trả lại để bạn bổ sung.</p>\n"
+"    <p t-if=\"not object.is_confidential and object.return_reason\">Lý do: <t t-out=\"object.return_reason or ''\">Reason</t></p>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">Xem yêu cầu</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: at_approval
+#: model:mail.template,body_html:at_approval.mail_template_request
+msgid ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Hello <t t-out=\"object.user_id.name or ''\">Approver</t>,</p>\n"
+"    <p>The request <b t-out=\"object.request_id.name or ''\">Request</b> is waiting for your approval.</p>\n"
+"    <ul t-if=\"not object.request_id.is_confidential\">\n"
+"        <li>Type: <t t-out=\"object.request_id.category_id.name or ''\">Type</t></li>\n"
+"        <li>Requested by: <t t-out=\"object.request_id.request_owner_id.name or ''\">Owner</t></li>\n"
+"        <li t-if=\"object.request_id.employee_id\">Employee concerned: <t t-out=\"object.request_id.employee_id.name or ''\">Employee</t></li>\n"
+"        <li t-if=\"object.request_id.amount\">Amount: <t t-out=\"format_amount(object.request_id.amount, object.request_id.currency_id) or ''\">0</t></li>\n"
+"        <li t-if=\"object.step_id\">Step: <t t-out=\"object.step_id.name or ''\">Step</t></li>\n"
+"    </ul>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.request_id.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.request_id.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">View Request</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"font-size: 13px; margin: 0px; padding: 0px;\">\n"
+"    <p>Xin chào <t t-out=\"object.user_id.name or ''\">Approver</t>,</p>\n"
+"    <p>Yêu cầu <b t-out=\"object.request_id.name or ''\">Request</b> đang chờ bạn phê duyệt.</p>\n"
+"    <ul t-if=\"not object.request_id.is_confidential\">\n"
+"        <li>Loại: <t t-out=\"object.request_id.category_id.name or ''\">Type</t></li>\n"
+"        <li>Người lập: <t t-out=\"object.request_id.request_owner_id.name or ''\">Owner</t></li>\n"
+"        <li t-if=\"object.request_id.employee_id\">Nhân viên liên quan: <t t-out=\"object.request_id.employee_id.name or ''\">Employee</t></li>\n"
+"        <li t-if=\"object.request_id.amount\">Số tiền: <t t-out=\"format_amount(object.request_id.amount, object.request_id.currency_id) or ''\">0</t></li>\n"
+"        <li t-if=\"object.step_id\">Cấp duyệt: <t t-out=\"object.step_id.name or ''\">Step</t></li>\n"
+"    </ul>\n"
+"    <p>\n"
+"        <a t-attf-href=\"{{ object.request_id.get_base_url() }}/mail/view?model=at.approval.request&amp;res_id={{ object.request_id.id }}\" style=\"background-color: #714B67; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">Xem yêu cầu</a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__rule__min
+msgid "A minimum number of approvers"
+msgstr "Tối thiểu N người duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "A request always starts as a draft."
+msgstr "Yêu cầu luôn bắt đầu ở trạng thái Nháp."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_needaction
+msgid "Action Needed"
+msgstr "Tác vụ cần thiết"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__active
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__active
+msgid "Active"
+msgstr "Đang hoạt động"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_ids
+msgid "Activities"
+msgstr "Hoạt động"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__notify_mode__activity
+msgid "Activity"
+msgstr "Hoạt động"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Hoạt động ngoại lệ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_state
+msgid "Activity State"
+msgstr "Trạng thái hoạt động"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Biểu tượng loại hoạt động"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__notify_mode__both
+msgid "Activity and Email"
+msgstr "Hoạt động và Email"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid ""
+"Add custom fields from the form of any request of this type\n"
+"                                        (the \"Add a Property\" button). They can be used in step conditions."
+msgstr ""
+"Thêm trường tùy biến ngay trên form của một yêu cầu thuộc loại này (nút "
+"\"Add a Property\"). Các trường này dùng được trong điều kiện của cấp duyệt."
+
+#. module: at_approval
+#: model:res.groups,name:at_approval.group_approval_admin
+msgid "Administrator"
+msgstr "Quản trị viên"
+
+#. module: at_approval
+#: model:ir.actions.act_window,name:at_approval.action_request_all
+#: model:ir.ui.menu,name:at_approval.menu_all_requests
+msgid "All Requests"
+msgstr "Tất cả yêu cầu"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__rule__all
+msgid "All approvers"
+msgstr "Tất cả người duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_amount
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__amount
+msgid "Amount"
+msgstr "Số tiền"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_amount
+msgid "Amount Setting"
+msgstr "Cấu hình trường Số tiền"
+
+#. module: at_approval
+#: model_terms:ir.actions.act_window,help:at_approval.action_category_dashboard
+msgid "An administrator creates approval types in Configuration."
+msgstr "Quản trị viên tạo loại yêu cầu trong mục Cấu hình."
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__rule__any
+msgid "Any one approver"
+msgstr "Bất kỳ một người duyệt"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_general
+msgid "Any request that fits no other type"
+msgstr "Mọi đề xuất không thuộc loại nào khác"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__domain
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_step_view_form
+msgid "Applies If"
+msgstr "Áp dụng khi"
+
+#. module: at_approval
+#: model:mail.activity.type,name:at_approval.mail_activity_type_approval
+msgid "Approval"
+msgstr "Phê duyệt"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_request
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Approval Request"
+msgstr "Yêu cầu phê duyệt"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_product_line
+msgid "Approval Request Product Line"
+msgstr "Dòng sản phẩm của yêu cầu phê duyệt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_calendar
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_list
+msgid "Approval Requests"
+msgstr "Yêu cầu phê duyệt"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_step
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_step_view_form
+msgid "Approval Step"
+msgstr "Cấp duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__step_ids
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Approval Steps"
+msgstr "Cấp duyệt"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_category
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__category_id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__category_id
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Approval Type"
+msgstr "Loại yêu cầu"
+
+#. module: at_approval
+#: model:ir.actions.act_window,name:at_approval.action_category_config
+#: model:ir.ui.menu,name:at_approval.menu_config_categories
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_list
+msgid "Approval Types"
+msgstr "Loại yêu cầu"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Approval forced by %s."
+msgstr "%s đã duyệt ép yêu cầu."
+
+#. module: at_approval
+#: model:mail.activity.type,summary:at_approval.mail_activity_type_approval
+msgid "Approval needed"
+msgstr "Cần phê duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Approval needed: %s"
+msgstr "Cần phê duyệt: %s"
+
+#. module: at_approval
+#: model:mail.template,subject:at_approval.mail_template_request
+msgid ""
+"Approval needed: {{ object.request_id.code or '' }} {{ "
+"object.request_id.name }}"
+msgstr ""
+"Cần phê duyệt: {{ object.request_id.code or '' }} {{ object.request_id.name "
+"}}"
+
+#. module: at_approval
+#: model:ir.actions.act_window,name:at_approval.action_category_dashboard
+#: model:ir.module.category,name:at_approval.module_category_at_approval
+#: model:ir.ui.menu,name:at_approval.menu_root
+#: model:res.groups.privilege,name:at_approval.res_groups_privilege_at_approval
+msgid "Approvals"
+msgstr "Phê duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Approvals only change through the buttons of the request."
+msgstr "Quyết định duyệt chỉ thay đổi qua các nút trên yêu cầu."
+
+#. module: at_approval
+#: model:mail.template,name:at_approval.mail_template_request
+msgid "Approvals: Approval Needed"
+msgstr "Phê duyệt: Cần phê duyệt"
+
+#. module: at_approval
+#: model:mail.template,name:at_approval.mail_template_approved
+msgid "Approvals: Request Approved"
+msgstr "Phê duyệt: Yêu cầu đã được duyệt"
+
+#. module: at_approval
+#: model:mail.template,name:at_approval.mail_template_refused
+msgid "Approvals: Request Refused"
+msgstr "Phê duyệt: Yêu cầu bị từ chối"
+
+#. module: at_approval
+#: model:mail.template,name:at_approval.mail_template_returned
+msgid "Approvals: Request Returned for Revision"
+msgstr "Phê duyệt: Yêu cầu bị trả lại bổ sung"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Approve"
+msgstr "Duyệt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Approve this request on behalf of every remaining approver?"
+msgstr "Duyệt yêu cầu này thay cho tất cả người duyệt còn lại?"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__approved
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_request__state__approved
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Approved"
+msgstr "Đã duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Approved by %s."
+msgstr "%s đã duyệt."
+
+#. module: at_approval
+#: model:mail.template,subject:at_approval.mail_template_approved
+msgid "Approved: {{ object.code or '' }} {{ object.name }}"
+msgstr "Đã duyệt: {{ object.code or '' }} {{ object.name }}"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_approver
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__user_id
+msgid "Approver"
+msgstr "Người duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__approver_type
+msgid "Approver Type"
+msgstr "Kiểu người duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__approver_user_ids
+msgid "Approver User"
+msgstr "Người duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__approver_ids
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Approvers"
+msgstr "Người duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Approvers coming from the approval type cannot be removed."
+msgstr "Không thể xóa người duyệt sinh ra từ cấu hình loại yêu cầu."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_search
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Archived"
+msgstr "Đã lưu trữ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_attachment_count
+msgid "Attachment Count"
+msgstr "Số lượng tệp đính kèm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__use_sequence
+msgid "Automated Numbering"
+msgstr "Đánh số tự động"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Back to Draft"
+msgstr "Về nháp"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__on_missing__block
+msgid "Block the submission"
+msgstr "Chặn gửi duyệt"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_business_trip
+msgid "Business Trip"
+msgstr "Công tác"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__can_approve
+msgid "Can Approve"
+msgstr "Được duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__can_manage
+msgid "Can Manage"
+msgstr "Được quản lý"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__can_withdraw
+msgid "Can Withdraw"
+msgstr "Được rút quyết định"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_request__state__cancel
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Cancelled"
+msgstr "Đã hủy"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__category_id
+msgid "Category"
+msgstr "Loại yêu cầu"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_salary
+msgid "Change the salary of an employee"
+msgstr "Điều chỉnh lương của một nhân viên"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__comment
+msgid "Comment"
+msgstr "Ý kiến"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__company_id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__company_id
+msgid "Company"
+msgstr "Công ty"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__rule
+msgid "Completed When"
+msgstr "Hoàn tất khi"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__is_confidential
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__is_confidential
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_search
+msgid "Confidential"
+msgstr "Bảo mật"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid ""
+"Confidential types always use the default templates, which carry no details."
+msgstr ""
+"Loại yêu cầu bảo mật luôn dùng mẫu email mặc định, không chứa nội dung chi "
+"tiết."
+
+#. module: at_approval
+#: model:ir.ui.menu,name:at_approval.menu_config
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. module: at_approval
+#: model:res.groups,comment:at_approval.group_approval_admin
+msgid "Configures approval types, steps and email templates."
+msgstr "Cấu hình loại yêu cầu, cấp duyệt và mẫu email."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_partner
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__partner_id
+msgid "Contact"
+msgstr "Liên hệ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_partner
+msgid "Contact Setting"
+msgstr "Cấu hình trường Liên hệ"
+
+#. module: at_approval
+#: model_terms:ir.actions.act_window,help:at_approval.action_request_my
+msgid "Create one from the Approvals dashboard."
+msgstr "Hãy tạo yêu cầu từ bảng điều khiển Phê duyệt."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_list
+msgid "Created On"
+msgstr "Ngày tạo"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__create_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__create_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__create_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__create_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__create_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__create_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__create_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__create_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__create_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__create_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__currency_id
+msgid "Currency"
+msgstr "Tiền tệ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__request_properties_definition
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__request_properties
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Custom Fields"
+msgstr "Trường tùy biến"
+
+#. module: at_approval
+#: model:ir.ui.menu,name:at_approval.menu_dashboard
+msgid "Dashboard"
+msgstr "Bảng điều khiển"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__date
+msgid "Date"
+msgstr "Ngày"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_date
+msgid "Date Setting"
+msgstr "Cấu hình trường Ngày"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__response_days
+msgid "Days to Respond"
+msgstr "Số ngày xử lý"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__decided_on
+msgid "Decided On"
+msgstr "Thời điểm quyết định"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Default template"
+msgstr "Mẫu mặc định"
+
+#. module: at_approval
+#: model:at.approval.step,name:at_approval.category_purchase_step_department
+#: model:at.approval.step,name:at_approval.category_recruitment_step_department
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__department_manager
+msgid "Department head"
+msgstr "Trưởng phòng"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Describe the request..."
+msgstr "Mô tả nội dung yêu cầu..."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__description
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__description
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__description
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Description"
+msgstr "Mô tả"
+
+#. module: at_approval
+#: model:at.approval.step,name:at_approval.category_business_trip_step_manager
+#: model:at.approval.step,name:at_approval.category_general_step_manager
+#: model:at.approval.step,name:at_approval.category_payment_step_manager
+#: model:at.approval.step,name:at_approval.category_recruitment_step_manager
+#: model:at.approval.step,name:at_approval.category_resignation_step_manager
+#: model:at.approval.step,name:at_approval.category_salary_step_manager
+#: model:at.approval.step,name:at_approval.category_transfer_step_manager
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__manager
+msgid "Direct manager"
+msgstr "Quản lý trực tiếp"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_return_wizard_view_form
+msgid "Discard"
+msgstr "Hủy bỏ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__display_name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__display_name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__display_name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__display_name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__display_name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_document
+msgid "Document"
+msgstr "Tài liệu"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Document (attach at least one file)"
+msgstr "Tài liệu (đính kèm ít nhất một file)"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_document
+msgid "Document Setting"
+msgstr "Cấu hình trường Tài liệu"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__attachment_number
+msgid "Documents"
+msgstr "Tài liệu"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_request__state__draft
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Draft"
+msgstr "Nháp"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__notify_mode__email
+msgid "Email"
+msgstr "Email"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Email Templates"
+msgstr "Mẫu email"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__mail_template_request_id
+msgid "Email: Approval Needed"
+msgstr "Email: Cần phê duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__mail_template_approved_id
+msgid "Email: Approved"
+msgstr "Email: Đã duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__mail_template_refused_id
+msgid "Email: Refused"
+msgstr "Email: Bị từ chối"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__mail_template_returned_id
+msgid "Email: Returned for Revision"
+msgstr "Email: Trả lại bổ sung"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_employee
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__employee_id
+msgid "Employee Concerned"
+msgstr "Nhân viên liên quan"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__employee_can_read
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__employee_can_read
+msgid "Employee Concerned Can Read"
+msgstr "Nhân viên liên quan được xem"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_employee
+msgid "Employee Concerned Setting"
+msgstr "Cấu hình trường Nhân viên liên quan"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__approver_preview
+msgid "Expected Approvers"
+msgstr "Người duyệt dự kiến"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Expected approvers when you submit"
+msgstr "Người duyệt dự kiến khi gửi"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__field
+msgid "Field on the request"
+msgstr "Trường trên yêu cầu"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Fields"
+msgstr "Trường"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_follower_ids
+msgid "Followers"
+msgstr "Người theo dõi"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Người theo dõi (Đối tác)"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font biểu tượng, ví dụ: fa-tasks"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Force Approval"
+msgstr "Duyệt ép"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Forced by %s"
+msgstr "Duyệt ép bởi %s"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_general
+msgid "General Request"
+msgstr "Tờ trình chung"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_purchase
+msgid "Goods or services to buy"
+msgstr "Hàng hóa hoặc dịch vụ cần mua"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__group_id
+msgid "Group"
+msgstr "Nhóm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__confidential_group_ids
+msgid "Groups Allowed to Read"
+msgstr "Nhóm được xem"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_message
+msgid "Has Message"
+msgstr "Có tin nhắn"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__job
+msgid "Holder of a job position"
+msgstr "Người giữ chức danh"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__id
+msgid "ID"
+msgstr "ID"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_exception_icon
+msgid "Icon"
+msgstr "Biểu tượng"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Biểu tượng cho thấy một hoạt động ngoại lệ."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__on_missing
+msgid "If No Approver Is Found"
+msgstr "Khi không tìm được người duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Nếu chọn, bạn cần chú ý tới các tin nhắn mới."
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__message_has_error
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Nếu chọn, một số tin nhắn sẽ có lỗi gửi."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__image
+msgid "Image"
+msgstr "Hình ảnh"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_is_follower
+msgid "Is Follower"
+msgstr "Là người theo dõi"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "It is not your turn to act on request \"%s\"."
+msgstr "Chưa đến lượt bạn xử lý yêu cầu \"%s\"."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__job_id
+msgid "Job Position"
+msgstr "Chức danh"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_category__required_property_labels
+msgid ""
+"Labels of the custom fields that must be filled before submitting, separated"
+" by commas."
+msgstr ""
+"Nhãn của các trường tùy biến bắt buộc điền trước khi gửi, cách nhau bằng dấu"
+" phẩy."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__write_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__write_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__write_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__write_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__write_uid
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__write_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__write_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__write_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__write_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__write_date
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_resignation
+msgid "Leave the company: last working day and handover"
+msgstr "Xin thôi việc: ngày làm việc cuối và bàn giao"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__level
+msgid "Levels Up"
+msgstr "Số cấp phía trên"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_location
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__location
+msgid "Location"
+msgstr "Địa điểm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_location
+msgid "Location Setting"
+msgstr "Cấu hình trường Địa điểm"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_step__sequence
+msgid "Lower runs first. Steps with the same order run in parallel."
+msgstr "Số nhỏ chạy trước. Các cấp cùng thứ tự chạy song song."
+
+#. module: at_approval
+#: model:ir.ui.menu,name:at_approval.menu_manager
+msgid "Manager"
+msgstr "Quản lý"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__manager_level
+msgid "Manager N levels up"
+msgstr "Quản lý cấp N"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__group
+msgid "Members of a group"
+msgstr "Thành viên của một nhóm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_has_error
+msgid "Message Delivery error"
+msgstr "Lỗi gửi tin nhắn"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_ids
+msgid "Messages"
+msgstr "Tin nhắn"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__min_count
+msgid "Minimum Approvals"
+msgstr "Số duyệt tối thiểu"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_transfer
+msgid "Move an employee to another position or department"
+msgstr "Chuyển nhân viên sang vị trí hoặc phòng ban khác"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__required
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__required_user_ids
+msgid "Must Approve"
+msgstr "Bắt buộc duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Thời hạn hoạt động của tôi"
+
+#. module: at_approval
+#: model:ir.ui.menu,name:at_approval.menu_my
+msgid "My Approvals"
+msgstr "Phê duyệt của tôi"
+
+#. module: at_approval
+#: model:ir.actions.act_window,name:at_approval.action_request_my
+#: model:ir.ui.menu,name:at_approval.menu_my_requests
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "My Requests"
+msgstr "Yêu cầu của tôi"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__name
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__new
+msgid "New"
+msgstr "Mới"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_kanban
+msgid "New Request"
+msgstr "Tạo yêu cầu"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Thời hạn cho hoạt động tiếp theo"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_summary
+msgid "Next Activity Summary"
+msgstr "Tóm tắt hoạt động tiếp theo"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_type_id
+msgid "Next Activity Type"
+msgstr "Loại hoạt động tiếp theo"
+
+#. module: at_approval
+#: model_terms:ir.actions.act_window,help:at_approval.action_category_dashboard
+msgid "No approval type yet"
+msgstr "Chưa có loại yêu cầu nào"
+
+#. module: at_approval
+#: model_terms:ir.actions.act_window,help:at_approval.action_request_my
+msgid "No request yet"
+msgstr "Chưa có yêu cầu nào"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid ""
+"Nobody would approve this request. Add an approver or ask an administrator "
+"to configure approval steps for \"%s\"."
+msgstr ""
+"Yêu cầu này chưa có ai duyệt. Hãy thêm người duyệt hoặc nhờ quản trị viên "
+"cấu hình cấp duyệt cho \"%s\"."
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_amount__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_date__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_employee__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_location__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_partner__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_period__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_product__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_quantity__no
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_reference__no
+msgid "None"
+msgstr "Không dùng"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__cancel
+msgid "Not Needed"
+msgstr "Không cần duyệt"
+
+#. module: at_approval
+#: model_terms:ir.actions.act_window,help:at_approval.action_request_to_review
+msgid "Nothing is waiting for your approval"
+msgstr "Không có yêu cầu nào đang chờ bạn duyệt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Notifications"
+msgstr "Thông báo"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__notify_mode
+msgid "Notify Approvers By"
+msgstr "Thông báo người duyệt qua"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__code
+msgid "Number"
+msgstr "Số"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__sequence_code
+msgid "Number Prefix"
+msgstr "Tiền tố số"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__sequence_id
+msgid "Number Sequence"
+msgstr "Dãy số"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Số lượng tác vụ"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_has_error_counter
+msgid "Number of errors"
+msgstr "Số lượng lỗi"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Số tin nhắn cần xử lý"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Số tin nhắn bị gửi lỗi"
+
+#. module: at_approval
+#: model:res.groups,name:at_approval.group_approval_officer
+msgid "Officer: See and force-approve all requests"
+msgstr "Chuyên viên: Xem và duyệt ép mọi yêu cầu"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Only an Approvals officer can force an approval."
+msgstr "Chỉ chuyên viên Phê duyệt mới được duyệt ép."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Only draft requests can be deleted. Archive the others instead."
+msgstr "Chỉ xóa được yêu cầu ở trạng thái Nháp. Các yêu cầu khác hãy lưu trữ."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Only the owner of request \"%s\" or an Approvals officer can do this."
+msgstr ""
+"Chỉ người lập yêu cầu \"%s\" hoặc chuyên viên Phê duyệt mới làm được việc "
+"này."
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_recruitment
+msgid "Open a position in your department"
+msgstr "Đề nghị tuyển thêm nhân sự cho phòng ban"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_amount__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_date__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_document__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_employee__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_location__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_partner__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_period__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_product__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_quantity__optional
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_reference__optional
+msgid "Optional"
+msgstr "Tùy chọn"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__sequence
+msgid "Order"
+msgstr "Thứ tự"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__can_manage
+msgid "Owner of the request, or Approvals officer."
+msgstr "Người lập yêu cầu, hoặc chuyên viên Phê duyệt."
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_payment
+msgid "Payment Request"
+msgstr "Đề nghị thanh toán"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_payment
+msgid "Payment to a vendor or a contact"
+msgstr "Thanh toán cho nhà cung cấp hoặc đối tác"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_period
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Period"
+msgstr "Thời gian"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__date_end
+msgid "Period End"
+msgstr "Kết thúc"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_period
+msgid "Period Setting"
+msgstr "Cấu hình trường Thời gian"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__date_start
+msgid "Period Start"
+msgstr "Bắt đầu"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Please fill in before submitting: %s"
+msgstr "Vui lòng điền trước khi gửi: %s"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__product_id
+msgid "Product"
+msgstr "Sản phẩm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_product
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__product_line_ids
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Products"
+msgstr "Sản phẩm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_product
+msgid "Products Setting"
+msgstr "Cấu hình trường Sản phẩm"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_purchase
+msgid "Purchase Request"
+msgstr "Đề nghị mua sắm"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_quantity
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__quantity
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__quantity
+msgid "Quantity"
+msgstr "Số lượng"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_quantity
+msgid "Quantity Setting"
+msgstr "Cấu hình trường Số lượng"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__reason
+msgid "Reason"
+msgstr "Lý do"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_recruitment
+msgid "Recruitment Request"
+msgstr "Đề nghị tuyển dụng"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__has_reference
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__reference
+msgid "Reference"
+msgstr "Tham chiếu"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__has_reference
+msgid "Reference Setting"
+msgstr "Cấu hình trường Tham chiếu"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Refuse"
+msgstr "Từ chối"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__refused
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_request__state__refused
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Refused"
+msgstr "Bị từ chối"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Refused by %s."
+msgstr "%s đã từ chối."
+
+#. module: at_approval
+#: model:mail.template,subject:at_approval.mail_template_refused
+msgid "Refused: {{ object.code or '' }} {{ object.name }}"
+msgstr "Bị từ chối: {{ object.code or '' }} {{ object.name }}"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__employee_user_id
+msgid "Related user name for the resource to manage its access."
+msgstr "Người dùng liên quan đến tài nguyên để quản lý sự truy cập."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__request_id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__request_id
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_return_wizard__request_id
+msgid "Request"
+msgstr "Yêu cầu"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" can no longer be cancelled."
+msgstr "Không thể hủy yêu cầu \"%s\" nữa."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" can only be edited by its owner while it is a draft."
+msgstr "Yêu cầu \"%s\" chỉ được người lập sửa khi còn ở trạng thái Nháp."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" cannot be set back to draft."
+msgstr "Không thể đưa yêu cầu \"%s\" về Nháp."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" has already been submitted."
+msgstr "Yêu cầu \"%s\" đã được gửi duyệt."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" is closed."
+msgstr "Yêu cầu \"%s\" đã đóng."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Request \"%s\" is not waiting for approval."
+msgstr "Yêu cầu \"%s\" không ở trạng thái chờ duyệt."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__field_name
+msgid "Request Field"
+msgstr "Trường trên yêu cầu"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__request_owner_id
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Requested By"
+msgstr "Người lập"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_category__is_confidential
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__is_confidential
+msgid ""
+"Requests are visible only to their owner, their approvers and the groups "
+"below. Emails carry no details."
+msgstr ""
+"Yêu cầu chỉ hiển thị với người lập, người duyệt và các nhóm bên dưới. Email "
+"không chứa nội dung chi tiết."
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_amount__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_date__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_document__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_employee__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_location__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_partner__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_period__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_product__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_quantity__required
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_category__has_reference__required
+msgid "Required"
+msgstr "Bắt buộc"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__required_property_labels
+msgid "Required Custom Fields"
+msgstr "Trường tùy biến bắt buộc"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_resignation
+msgid "Resignation"
+msgstr "Thôi việc"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__activity_user_id
+msgid "Responsible User"
+msgstr "Người phụ trách"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_return_wizard_view_form
+msgid "Return Request"
+msgstr "Trả lại yêu cầu"
+
+#. module: at_approval
+#: model:ir.model,name:at_approval.model_at_approval_return_wizard
+msgid "Return an Approval Request for Revision"
+msgstr "Trả lại yêu cầu phê duyệt để bổ sung"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_return_wizard_view_form
+msgid "Return for Revision"
+msgstr "Trả lại bổ sung"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Returned for revision by %(user)s: %(reason)s"
+msgstr "%(user)s trả lại để bổ sung: %(reason)s"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__return_reason
+msgid "Revision Requested"
+msgstr "Yêu cầu bổ sung"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Revision needed: %s"
+msgstr "Cần bổ sung: %s"
+
+#. module: at_approval
+#: model:mail.template,subject:at_approval.mail_template_returned
+msgid "Revision needed: {{ object.code or '' }} {{ object.name }}"
+msgstr "Cần bổ sung: {{ object.code or '' }} {{ object.name }}"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_step_view_form
+msgid "Rules"
+msgstr "Quy tắc"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Lỗi gửi SMS"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_salary
+msgid "Salary Adjustment"
+msgstr "Điều chỉnh lương"
+
+#. module: at_approval
+#: model:res.groups,comment:at_approval.group_approval_officer
+msgid ""
+"Sees every non-confidential request, can change approvers and force "
+"approval."
+msgstr "Xem mọi yêu cầu không bảo mật, được đổi người duyệt và duyệt ép."
+
+#. module: at_approval
+#: model:mail.template,description:at_approval.mail_template_request
+msgid "Sent to an approver when it is their turn to approve a request"
+msgstr "Gửi cho người duyệt khi đến lượt họ duyệt"
+
+#. module: at_approval
+#: model:mail.template,description:at_approval.mail_template_approved
+msgid "Sent to the owner when a request is approved"
+msgstr "Gửi cho người lập khi yêu cầu được duyệt"
+
+#. module: at_approval
+#: model:mail.template,description:at_approval.mail_template_refused
+msgid "Sent to the owner when a request is refused"
+msgstr "Gửi cho người lập khi yêu cầu bị từ chối"
+
+#. module: at_approval
+#: model:mail.template,description:at_approval.mail_template_returned
+msgid "Sent to the owner when an approver returns a request for revision"
+msgstr "Gửi cho người lập khi yêu cầu bị trả lại bổ sung"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__sequence
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__sequence
+msgid "Sequence"
+msgstr "Thứ tự"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__on_missing__skip
+msgid "Skip this step"
+msgstr "Bỏ qua cấp này"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_step__approver_type__user
+msgid "Specific users"
+msgstr "Người dùng cụ thể"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "Standard Fields"
+msgstr "Trường có sẵn"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__state
+msgid "State"
+msgstr "Trạng thái"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__status
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Trạng thái dựa trên hoạt động\n"
+"Quá hạn: Hạn chót hạn đã qua\n"
+"Hôm nay: Hôm nay là ngày phải thực hiện\n"
+"Kế hoạch: Cần thực hiện trong tương lai."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_approver__step_id
+msgid "Step"
+msgstr "Cấp duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "Step \"%(step)s\": %(reason)s."
+msgstr "Cấp \"%(step)s\": %(reason)s."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_category.py:0
+msgid "Step \"%(step)s\": invalid condition (%(error)s)."
+msgstr "Cấp \"%(step)s\": điều kiện không hợp lệ (%(error)s)."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_category.py:0
+msgid "Step \"%(step)s\": please fill in \"%(field)s\"."
+msgstr "Cấp \"%(step)s\": vui lòng điền \"%(field)s\"."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid ""
+"Step \"%s\" has no approver for this request. Ask an administrator to check "
+"the approval type or the org chart."
+msgstr ""
+"Cấp \"%s\" không tìm được người duyệt cho yêu cầu này. Hãy nhờ quản trị viên"
+" kiểm tra loại yêu cầu hoặc sơ đồ tổ chức."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_category.py:0
+msgid "Step \"%s\": the manager level must be at least 1."
+msgstr "Cấp \"%s\": số cấp quản lý phải từ 1 trở lên."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_category.py:0
+msgid "Step \"%s\": the minimum number of approvals must be at least 1."
+msgstr "Cấp \"%s\": số duyệt tối thiểu phải từ 1 trở lên."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid ""
+"Steps run in order. Steps sharing the same order run in parallel.\n"
+"                                A step whose condition does not match the request is skipped."
+msgstr ""
+"Các cấp chạy theo thứ tự. Các cấp cùng thứ tự chạy song song. Cấp có điều "
+"kiện không khớp với yêu cầu sẽ bị bỏ qua."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__name
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Subject"
+msgstr "Tiêu đề"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Submit"
+msgstr "Gửi duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_request__state__pending
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Submitted"
+msgstr "Đã gửi"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_step__field_name
+msgid ""
+"Technical name of a user or employee field of the request, or the label of a"
+" custom field pointing to a user or an employee."
+msgstr ""
+"Tên kỹ thuật của một trường người dùng / nhân viên trên yêu cầu, hoặc nhãn "
+"của một trường tùy biến trỏ tới người dùng / nhân viên."
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__employee_id
+msgid ""
+"The employee the request is about. Org-chart approvers are looked up from "
+"this employee."
+msgstr ""
+"Nhân viên mà yêu cầu đề cập tới. Người duyệt theo sơ đồ tổ chức được tìm từ "
+"nhân viên này."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "The owner of a request cannot approve it."
+msgstr "Người lập không được duyệt yêu cầu của chính mình."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_return_wizard_view_form
+msgid ""
+"The request goes back to its owner as a draft. Every decision taken so far "
+"is discarded."
+msgstr ""
+"Yêu cầu quay về người lập ở trạng thái Nháp. Mọi quyết định trước đó bị hủy."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "The status of a request only changes through its buttons."
+msgstr "Trạng thái yêu cầu chỉ thay đổi qua các nút trên yêu cầu."
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_step__required_user_ids
+msgid "These users must approve whatever the completion rule says."
+msgstr "Những người này bắt buộc phải duyệt, bất kể quy tắc hoàn tất."
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__pending
+msgid "To Approve"
+msgstr "Chờ duyệt"
+
+#. module: at_approval
+#: model:ir.actions.act_window,name:at_approval.action_request_to_review
+#: model:ir.ui.menu,name:at_approval.menu_to_review
+msgid "To Review"
+msgstr "Cần duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_category__to_review_count
+msgid "To Review Count"
+msgstr "Số yêu cầu cần duyệt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_kanban
+msgid "To Review:"
+msgstr "Cần duyệt:"
+
+#. module: at_approval
+#: model:at.approval.category,name:at_approval.category_transfer
+msgid "Transfer or Appointment"
+msgstr "Điều chuyển / Bổ nhiệm"
+
+#. module: at_approval
+#: model:at.approval.category,description:at_approval.category_business_trip
+msgid "Travel for work: where, when and estimated cost"
+msgstr "Đi công tác: địa điểm, thời gian và chi phí dự kiến"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Loại hoạt động ngoại lệ trong bản ghi."
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_product_line__uom_id
+msgid "Unit"
+msgstr "Đơn vị"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__employee_user_id
+msgid "User"
+msgstr "Người dùng"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_step__user_ids
+msgid "Users"
+msgstr "Người dùng"
+
+#. module: at_approval
+#: model:ir.model.fields.selection,name:at_approval.selection__at_approval_approver__status__waiting
+msgid "Waiting"
+msgstr "Chưa đến lượt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_search
+msgid "Waiting for My Approval"
+msgstr "Đang chờ tôi duyệt"
+
+#. module: at_approval
+#: model:ir.model.fields,field_description:at_approval.field_at_approval_request__website_message_ids
+msgid "Website Messages"
+msgstr "Thông báo trên trang web"
+
+#. module: at_approval
+#: model:ir.model.fields,help:at_approval.field_at_approval_request__website_message_ids
+msgid "Website communication history"
+msgstr "Lịch sử trao đổi qua trang web"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_return_wizard_view_form
+msgid "What should the owner change or add?"
+msgstr "Người lập cần sửa hoặc bổ sung gì?"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_step_view_form
+msgid "Who Approves"
+msgstr "Ai duyệt"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "Withdraw My Decision"
+msgstr "Rút quyết định"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_request_view_form
+msgid "You can add more approvers below. They approve after the steps above."
+msgstr "Bạn có thể thêm người duyệt bên dưới. Họ duyệt sau các cấp ở trên."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "You can only comment on your own approval."
+msgstr "Bạn chỉ được ghi ý kiến trên dòng duyệt của mình."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "You can only create requests for yourself."
+msgstr "Bạn chỉ được tạo yêu cầu cho chính mình."
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "You cannot change the approvers of request \"%s\"."
+msgstr "Bạn không được đổi người duyệt của yêu cầu \"%s\"."
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "e.g. Business Trip"
+msgstr "ví dụ: Công tác"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "e.g. CT"
+msgstr "ví dụ: CT"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_step_view_form
+msgid "e.g. Department head"
+msgstr "ví dụ: Trưởng phòng"
+
+#. module: at_approval
+#: model_terms:ir.ui.view,arch_db:at_approval.at_approval_category_view_form
+msgid "e.g. Proposed salary, Effective date"
+msgstr "ví dụ: Lương đề xuất, Ngày hiệu lực"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "no approver found"
+msgstr "không tìm được người duyệt"
+
+#. module: at_approval
+#. odoo-python
+#: code:addons/at_approval/models/approval_request.py:0
+msgid "skipped, condition not met"
+msgstr "bỏ qua do không khớp điều kiện"
